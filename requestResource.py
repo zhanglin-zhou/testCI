@@ -15,8 +15,13 @@ resources = { "broker" : "10.112.118.187",
               "agent"  : "agent1"
             }
 
-with open(sys.argv[2], 'w') as resource_file:
-   json.dump(resources, resource_file)
+output = {
+   "resources" : resources,
+   "testcases" : data["testcases"]
+}
+
+with open(sys.argv[2], 'w') as out_file:
+   json.dump(output, out_file)
 
 
 print "provided resources:"
