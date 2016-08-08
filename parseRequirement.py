@@ -19,3 +19,4 @@ for i, r in enumerate(result):
    with open(sys.argv[1]+"_"+str(i), 'w') as result_file:
       json.dump(r, result_file)
 
+print json.dumps(result)
