@@ -12,7 +12,7 @@ print "requested resource based on requirement:"
 print json.dumps(data, indent=4, sort_keys=True)
 
 resources = { "broker" : "10.112.118.187",
-              "agent"  : "agent1"
+              "os"     : ["10.11", "10.10"]
             }
 
 output = {
