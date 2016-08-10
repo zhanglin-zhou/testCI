@@ -10,7 +10,7 @@ stage '1. Parsing requirement'
 node('viewci') {
    echo "Start view ci for build: ${env.ViewClientBuildNum}"
    git url:'https://github.com/zhanglin-zhou/testCI.git'
-   sh "python parseRequirement.py requirement > requirement.json"
+   sh "python parseRequirement.py requirement > requirements.json"
    stash name: "requirement", includes: "requirements.json"
 }
 
