@@ -45,7 +45,7 @@ node('viewci') {
          runners[i] = {
             node(label) {
                echo "Running in label: ${label} for resource:"
-               echo "${(new JsonBuilder(resource).toPrettyString()}"
+               echo "${(new JsonBuilder(resource).toPrettyString())}"
                //git url:'https://github.com/zhanglin-zhou/testCI.git'
                writeFile file: "resource.json", text: (new JsonBuilder(resource).toString())
                //sh "python deployAndRun.py $ViewClientBuildNum resources.json > log"
