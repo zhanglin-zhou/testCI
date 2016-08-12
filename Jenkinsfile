@@ -22,7 +22,7 @@ lock('viewci_resouce_pool') {
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
       sh "git add resources_pool.json"
       sh "git commit --file resources.json"
-      sh "git push"
+      sh "git push --set-upstream origin master"
       stash name: "resource", includes: "resources.json"
    }
 }
@@ -57,6 +57,6 @@ lock('viewci_resouce_pool') {
       sh "python requestResource.py -r resources.json -p resources_pool.json"
       sh "git add resources_pool.json"
       sh "git commit --file resources.json"
-      sh "git push"
+      sh "git push --set-upstream origin master"
    }
 }
