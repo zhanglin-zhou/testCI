@@ -1,1 +1,1 @@
-[{"agents": [{"os": "win2008", "name": "rdsh1"}, {"os": "win2012", "name": "rdsh2"}, {"os": "win7", "name": "agent2"}], "host": "10.112.118.187", "os": "win2008", "user": {"password": "ca$hc0w", "name": "crt\\administrator"}}]
+[{"os": "win2008", "host": "10.112.118.187", "agents": [{"os": "win2008", "name": "rdsh1"}, {"os": "win2012", "name": "rdsh2"}], "user": {"password": "ca$hc0w", "name": "crt\\administrator"}}]
