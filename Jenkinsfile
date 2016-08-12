@@ -25,7 +25,7 @@ lock('viewci_resouce_pool') {
       sh "git commit --file resources.json"
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'd5e3ab3b-57eb-4698-ac9e-0537a275f28a', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
          String encoded_password = java.net.URLEncoder.encode(env.GIT_PASSWORD, "UTF-8")
-         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@github.com/zhanglin-zhou/testCI.git --set-upstream origin master")
+         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@github.com/zhanglin-zhou/testCI.git")
       }
       stash name: "resource", includes: "resources.json"
    }
@@ -64,7 +64,7 @@ lock('viewci_resouce_pool') {
       sh "git commit --file resources.json"
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'd5e3ab3b-57eb-4698-ac9e-0537a275f28a', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
          String encoded_password = java.net.URLEncoder.encode(env.GIT_PASSWORD, "UTF-8")
-         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@github.com/zhanglin-zhou/testCI.git --set-upstream origin master")
+         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@github.com/zhanglin-zhou/testCI.git")
       }   
    }
 }
