@@ -23,7 +23,10 @@ lock('viewci_resouce_pool') {
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
       sh "git add resources_pool.json"
       sh "git commit --file resources.json"
-      sh "git push --set-upstream origin master"
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'd5e3ab3b-57eb-4698-ac9e-0537a275f28a', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+         String encoded_password = java.net.URLEncoder.encode(env.GIT_PASSWORD, "UTF-8")
+         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@<REPO> --set-upstream origin master")
+      }
       stash name: "resource", includes: "resources.json"
    }
 }
@@ -59,6 +62,9 @@ lock('viewci_resouce_pool') {
       sh "python requestResource.py -r resources.json -p resources_pool.json"
       sh "git add resources_pool.json"
       sh "git commit --file resources.json"
-      sh "git push --set-upstream origin master"
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'd5e3ab3b-57eb-4698-ac9e-0537a275f28a', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+         String encoded_password = java.net.URLEncoder.encode(env.GIT_PASSWORD, "UTF-8")
+         sh("git push https://${env.GIT_USERNAME}:${encoded_password}@<REPO> --set-upstream origin master")
+      }   
    }
 }
