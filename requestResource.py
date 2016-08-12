@@ -104,18 +104,19 @@ if __name__ == '__main__':
    try:
       if args.resources is not None:
          resources = json.load(args.resources)
-         manager.release_resource(resources, pool)
+         manager.release_resource(resources['resouces'], pool)
 
       if args.requirements is not None:
          requirements = json.load(args.requirements)
-         requested_resources = manager.apply_resource(requirements, pool)
+         requested_resources = manager.apply_resource(requirements['resources'], pool)
 
       args.pool.seek(0)
       args.pool.truncate(0)
       json.dump(pool, args.pool)
 
       if requested_resources is not None:
-         print json.dumps(requested_resources)
+         requirements['resources'] = requested_resources
+         print json.dumps(requirements)
    except Exception as e:
       logging.exception('')
       sys.exit(-1)
