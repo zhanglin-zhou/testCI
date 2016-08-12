@@ -54,7 +54,8 @@ node('viewci') {
       }
       parallel runners
    } catch(Exception ex) {
-      println("Catching the exception");
+      println("Catching the exception")
+      throw ex
    } finally {
       stage '4. Release resources'
       lock('viewci_resouce_pool') {
