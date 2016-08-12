@@ -40,11 +40,12 @@ node('viewci') {
    for (int i = 0; i < resources.size(); i++) {
       def resource = resources[i];
       def label = resource["os"]
+      echo "${resource}"
       runners[i] = {
          node(label) {
             echo "Running in label: ${label}"
             //git url:'https://github.com/zhanglin-zhou/testCI.git'
-            echo "${JsonOutput.toJson(resources[i])}"
+            echo "${resource}"
             writeFile file: "resources.json", text: JsonOutput.toJson(resources[i])
             //sh "python deployAndRun.py $ViewClientBuildNum resources.json > log"
          }
