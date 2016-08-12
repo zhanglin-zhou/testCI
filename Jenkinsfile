@@ -17,7 +17,6 @@ node('viewci') {
 stage '2. Requesting resource'
 lock('viewci_resouce_pool') {
    node('viewci') {
-      step([$class: 'CriticalBlockStart'])
       git url:'https://github.com/zhanglin-zhou/testCI.git'
       unstash "requirement"
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
