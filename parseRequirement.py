@@ -14,14 +14,16 @@ result = [
       "os": "10.11", 
       "testcases": [
          "testOpenAboutWindow"
-      ], 
-      "agents": [
-         {
-            "os": "win7"
+      ],
+      "resources" : {
+         "agents": [
+            {
+               "os": "win7"
+            }
+         ], 
+         "broker": {
+            "os": "any"
          }
-      ], 
-      "broker": {
-         "os": "any"
       }
    }
 ];
