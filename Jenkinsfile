@@ -30,7 +30,7 @@ lock('viewci_resouce_pool') {
 
 stage '3. Deploy and run test cases'
 node('viewci') {
-   git url:'https://github.com/zhanglin-zhou/testCI.git'
+   git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
    unstash "resource"
    def resources = jsonParse(readFile("resources.json"))
    def runners = [:]
@@ -54,7 +54,7 @@ stage '4. Release resources'
 lock('viewci_resouce_pool') {
    node('viewci') {
       step([$class: 'WsCleanup'])
-      git url:'https://github.com/zhanglin-zhou/testCI.git'
+      git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
       unstash "resource"
       sh "python requestResource.py -r resources.json -p resources_pool.json"
       sh "git add resources_pool.json"
