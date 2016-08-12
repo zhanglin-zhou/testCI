@@ -46,7 +46,7 @@ node('viewci') {
             echo "Running in label: ${label}"
             //git url:'https://github.com/zhanglin-zhou/testCI.git'
             echo "${resource}"
-            writeFile file: "resources.json", text: "${resource}"
+            writeFile file: "resources.json", text: ${resource}
             //sh "python deployAndRun.py $ViewClientBuildNum resources.json > log"
          }
       }
