@@ -20,9 +20,8 @@ class ResourcePoolManager(object):
       '''
       request the resource specified in requirements from given pool resources
       '''
-      req_res = []
       for req in requirements:
-         b_req_os = req['broker']['os']
+         b_req_os = req['resources']['broker']['os']
          #filter broker os
          brokers = [b for b in pool if b_req_os == 'any' or b_req_os == b['os']]
          select_broker = None
@@ -31,7 +30,7 @@ class ResourcePoolManager(object):
             try:
                select_agents = []
                agents = copy.copy(b['agents'])
-               for a_req in req['agents']:
+               for a_req in req['resources']['agents']:
                   a_req_os = a_req['os']
                   agent = next(a for a in agents if a_req_os == 'any' or a_req_os == a['os'])
                   select_agents.append(agent)
@@ -46,10 +45,10 @@ class ResourcePoolManager(object):
             for agent in select_agents:
                agent_res.remove(agent)
             select_broker['agents'] = select_agents
-            req_res.append(select_broker)
+            req['resources'] = select_broker
          else:
             raise
-      return req_res
+      return requirements
 
    #@EntryExit()
    def release_resource(self, resources, pool):
@@ -59,11 +58,11 @@ class ResourcePoolManager(object):
       for res in resources:
          broker = None
          try:
-            broker = next(b for b in pool if b['host'] == res['host'])
+            broker = next(b for b in pool if b['host'] == res['resources']['host'])
          except StopIteration:
-            pool.append(res)
+            pool.append(res['resources'])
          else:
-            broker['agents'] += res['agents']
+            broker['agents'] += res['resources']['agents']
 
 if __name__ == '__main__':
    parser = argparse.ArgumentParser(description ='Request or release resource')
@@ -104,19 +103,18 @@ if __name__ == '__main__':
    try:
       if args.resources is not None:
          resources = json.load(args.resources)
-         manager.release_resource(resources['resouces'], pool)
+         manager.release_resource(resources, pool)
 
       if args.requirements is not None:
          requirements = json.load(args.requirements)
-         requested_resources = manager.apply_resource(requirements['resources'], pool)
+         requested_resources = manager.apply_resource(requirements, pool)
 
       args.pool.seek(0)
       args.pool.truncate(0)
       json.dump(pool, args.pool)
 
       if requested_resources is not None:
-         requirements['resources'] = requested_resources
-         print json.dumps(requirements)
+         print json.dumps(requested_resources)
    except Exception as e:
       logging.exception('')
       sys.exit(-1)
