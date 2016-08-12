@@ -1,0 +1,20 @@
+[      
+   {
+      "agents": [
+         {
+            "name": "agent2", 
+            "os": "win7"
+         }, 
+         {
+            "name": "rdsh1", 
+            "os": "win2008"
+         }
+      ], 
+      "host": "10.112.118.187", 
+      "os": "win2008",
+      "user": {
+         "name": "crt\\administrator", 
+         "password": "ca$hc0w"
+      }
+   }
+]

@@ -16,9 +16,14 @@ node('viewci') {
 
 stage '2. Requesting resource'
 node('viewci_pool_manager') {
+   step([$class: 'CriticalBlockStart'])
    git url:'https://github.com/zhanglin-zhou/testCI.git'
    unstash "requirement"
-   sh "python requestResource.py requirements.json resources.json"
+   sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
+   sh "git add resources_pool.json"
+   sh "git commit --file resources.json"
+   sh "git push"
+   step([$class: 'CriticalBlockEnd'])
    stash name: "resource", includes: "resources.json"
 }
 
@@ -42,4 +47,16 @@ node('viewci') {
       }
    }
    parallel runners
+}
+
+stage '4. Release resources'
+node('viewci_pool_manager') {
+   step([$class: 'CriticalBlockStart'])
+   git url:'https://github.com/zhanglin-zhou/testCI.git'
+   unstash "resource"
+   sh "python requestResource.py -r resources.json -p resources_pool.json"
+   sh "git add resources_pool.json"
+   sh "git commit --file resources.json"
+   sh "git push"
+   step([$class: 'CriticalBlockEnd'])
 }
