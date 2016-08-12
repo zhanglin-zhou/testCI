@@ -17,6 +17,7 @@ node('viewci') {
 stage '2. Requesting resource'
 lock('viewci_resouce_pool') {
    node('viewci') {
+      step([$class: 'WsCleanup'])
       git url:'https://github.com/zhanglin-zhou/testCI.git'
       unstash "requirement"
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
@@ -52,6 +53,7 @@ node('viewci') {
 stage '4. Release resources'
 lock('viewci_resouce_pool') {
    node('viewci') {
+      step([$class: 'WsCleanup'])
       git url:'https://github.com/zhanglin-zhou/testCI.git'
       unstash "resource"
       sh "python requestResource.py -r resources.json -p resources_pool.json"
