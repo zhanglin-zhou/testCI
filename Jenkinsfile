@@ -5,20 +5,19 @@ def jsonParse(def json) {
    new groovy.json.JsonSlurperClassic().parseText(json)
 }
 
-stage '1. Parsing requirement'
 
 node('viewci') {
+
+   stage '1. Parsing requirement'
+
    echo "Start view ci for build: ${env.ViewClientBuildNum}"
-   git url:'https://github.com/zhanglin-zhou/testCI.git'
+   git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
    sh "python parseRequirement.py requirement > requirements.json"
    stash name: "requirement", includes: "requirements.json"
-}
 
-stage '2. Requesting resource'
-lock('viewci_resouce_pool') {
-   node('viewci') {
-      step([$class: 'WsCleanup'])
-      git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
+   stage '2. Requesting resource'
+
+   lock('viewci_resouce_pool') {
       unstash "requirement"
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
       sh "git add resources_pool.json"
@@ -29,12 +28,10 @@ lock('viewci_resouce_pool') {
       }
       stash name: "resource", includes: "resources.json"
    }
-}
 
-node('viewci') {
+   stage '3. Deploy and run test cases'
+
    try {
-      stage '3. Deploy and run test cases'
-      git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
       unstash "resource"
       def resources = jsonParse(readFile("resources.json"))
       def runners = [:]
@@ -57,8 +54,12 @@ node('viewci') {
       println("Catching the exception")
       throw ex
    } finally {
-      stage '4. Release resources'
+
+   stage '4. Release resources'
+
       lock('viewci_resouce_pool') {
+         git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
+         unstash "resource"
          sh "python requestResource.py -r resources.json -p resources_pool.json"
          sh "git add resources_pool.json"
          sh "git commit --file resources.json"
@@ -68,6 +69,4 @@ node('viewci') {
          }
       }
    }
-   stage '5. Collect log'
 }
-
