@@ -46,9 +46,9 @@ node('viewci') {
             node(label) {
                echo "Running in label: ${label} for resource:"
                echo "${(new JsonBuilder(resource).toPrettyString())}"
-               //git url:'https://github.com/zhanglin-zhou/testCI.git'
+               git url:'https://github.com/zhanglin-zhou/testCI.git'
                writeFile file: "resource.json", text: (new JsonBuilder(resource).toString())
-               //sh "python deployAndRun.py $ViewClientBuildNum resources.json > log"
+               sh "python deploy/deploy_viewclientmac.py -c -b '${env.ViewClientBuildNum }' -i"
             }
          }
       }
