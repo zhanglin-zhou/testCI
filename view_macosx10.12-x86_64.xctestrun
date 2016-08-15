@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>viewUITests</key>
+	<dict>
+		<key>BundleIdentifiersForCrashReportEmphasis</key>
+		<array>
+			<string>com.vmware.horizon</string>
+			<string>com.vmware.viewUnitTests</string>
+			<string>com.vmware.horizon.viewUITests</string>
+		</array>
+		<key>CommandLineArguments</key>
+		<array/>
+		<key>DependentProductPaths</key>
+		<array>
+			<string>__TESTROOT__/VMware Horizon Client.app</string>
+			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
+			<string>__TESTROOT__/viewUITests-Runner.app/Contents/PlugIns/viewUITests.xctest</string>
+		</array>
+		<key>EnvironmentVariables</key>
+		<dict>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>OS_ACTIVITY_DT_MODE</key>
+			<string>YES</string>
+			<key>__XCODE_BUILT_PRODUCTS_DIR_PATHS</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>__XPC_DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>__XPC_DYLD_LIBRARY_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+		</dict>
+		<key>IsUITestBundle</key>
+		<true/>
+		<key>ProductModuleName</key>
+		<string>viewUITests</string>
+		<key>TestBundlePath</key>
+		<string>__TESTHOST__/Contents/PlugIns/viewUITests.xctest</string>
+		<key>TestHostBundleIdentifier</key>
+		<string>com.apple.test.viewUITests-Runner</string>
+		<key>TestHostPath</key>
+		<string>__TESTROOT__/viewUITests-Runner.app</string>
+		<key>TestingEnvironmentVariables</key>
+		<dict>
+			<key>DTX_CONNECTION_SERVICES_PATH</key>
+			<string>__SHAREDFRAMEWORKS__/DTXConnectionServices.framework</string>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>__TESTROOT__:__PLATFORMS__/MacOSX.platform/Developer/Library/Frameworks</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>__TESTROOT__:__PLATFORMS__/MacOSX.platform/Developer/Library/Frameworks</string>
+			<key>XCODE_DBG_XPC_EXCLUSIONS</key>
+			<string>com.apple.dt.xctestSymbolicator</string>
+		</dict>
+		<key>ToolchainsSettingValue</key>
+		<array>
+			<string>com.apple.dt.toolchain.XcodeDefault</string>
+		</array>
+		<key>UITargetAppPath</key>
+		<string>/Applications/VMware Horizon Client.app</string>
+	</dict>
+	<key>viewUnitTests</key>
+	<dict>
+		<key>BundleIdentifiersForCrashReportEmphasis</key>
+		<array>
+			<string>com.vmware.horizon</string>
+			<string>com.vmware.viewUnitTests</string>
+			<string>com.vmware.horizon.viewUITests</string>
+		</array>
+		<key>CommandLineArguments</key>
+		<array/>
+		<key>DependentProductPaths</key>
+		<array>
+			<string>__TESTROOT__/VMware Horizon Client.app</string>
+			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
+			<string>__TESTROOT__/viewUITests-Runner.app/Contents/PlugIns/viewUITests.xctest</string>
+		</array>
+		<key>EnvironmentVariables</key>
+		<dict>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>OS_ACTIVITY_DT_MODE</key>
+			<string>YES</string>
+			<key>__XCODE_BUILT_PRODUCTS_DIR_PATHS</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>__XPC_DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+			<key>__XPC_DYLD_LIBRARY_PATH</key>
+			<string>/Users/zji/main-zji-12-1/crt-main/maug/build/beta/viewclientmac/CI</string>
+		</dict>
+		<key>IsAppHostedTestBundle</key>
+		<true/>
+		<key>ProductModuleName</key>
+		<string>viewUnitTests</string>
+		<key>TestBundlePath</key>
+		<string>__TESTHOST__/Contents/PlugIns/viewUnitTests.xctest</string>
+		<key>TestHostBundleIdentifier</key>
+		<string>com.vmware.horizon</string>
+		<key>TestHostPath</key>
+		<string>__TESTROOT__/VMware Horizon Client.app</string>
+		<key>TestingEnvironmentVariables</key>
+		<dict>
+			<key>DTX_CONNECTION_SERVICES_PATH</key>
+			<string>__SHAREDFRAMEWORKS__/DTXConnectionServices.framework</string>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>__TESTROOT__:__PLATFORMS__/MacOSX.platform/Developer/Library/Frameworks</string>
+			<key>DYLD_INSERT_LIBRARIES</key>
+			<string>__PLATFORMS__/MacOSX.platform/Developer/Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>__TESTROOT__:__PLATFORMS__/MacOSX.platform/Developer/Library/Frameworks</string>
+			<key>XCInjectBundleInto</key>
+			<string>__TESTROOT__/VMware Horizon Client.app/Contents/MacOS/VMware Horizon Client</string>
+			<key>XCODE_DBG_XPC_EXCLUSIONS</key>
+			<string>com.apple.dt.xctestSymbolicator</string>
+		</dict>
+		<key>ToolchainsSettingValue</key>
+		<array/>
+	</dict>
+</dict>
+</plist>
