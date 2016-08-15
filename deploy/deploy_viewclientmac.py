@@ -5,7 +5,6 @@ import argparse
 import json
 import logging
 import os
-import ssl
 import subprocess
 import sys
 import urllib2
@@ -34,12 +33,6 @@ build_number = ""
 
 
 class DeployViewClientMac(object):
-
-   def __init__(self):
-      self.ctx = ssl.create_default_context()
-      self.ctx.check_hostname = False
-      self.ctx.verify_mode = ssl.CERT_NONE
-
 
    # Below are methods related to clean up env.
    @EntryExit()
@@ -181,7 +174,6 @@ class DeployViewClientMac(object):
       self._remove_cache()
       self._reset_launch_services()
       self._restart_dock()
-      sys.exit(0)
 
 
    # Wrapper for download components.
@@ -197,7 +189,7 @@ class DeployViewClientMac(object):
          except:
             logger.error('Download failed for %d times' % attemps)
          else:
-            sys.exit(0)
+            return
          logger.error('Download FAILED for too many times')
          sys.exit(-1)
 
@@ -221,7 +213,6 @@ class DeployViewClientMac(object):
          if os.path.exists(MOUNT_POINT):
             logger.info('Unmount after install')
             self._unmount_dmg()
-         sys.exit(0)
 
 
 if __name__ == "__main__":
@@ -242,13 +233,8 @@ if __name__ == "__main__":
 
    if args.clean:
       deployer.clean()
-   elif args.install:
-      deployer.install()
-   elif args.build_num and not args.build_num.strip() == "":
+   if args.build_num and not args.build_num.strip() == "":
       build_number = args.build_num
       deployer.download()
-   else:
-      # If no matching, print out the usage.
-      print "%s" % parser.format_help()
-      sys.exit(-1)
-
+   if args.install:
+      deployer.install()
