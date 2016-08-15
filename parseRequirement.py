@@ -13,7 +13,7 @@ result = [
    {
       "os": "10.11", 
       "testcases": [
-         "testOpenAboutWindow"
+         "viewUITests/vmtAboutWindow/testOpenAboutWindow"
       ],
       "resources" : {
          "agents": [
