@@ -25,6 +25,23 @@ spec = [
             "os": "any"
          }
       }
+   },
+   {
+      "os": "10.11", 
+      "was": "true",
+      "testcases": [
+         "viewUITests/vmtAboutWindow/testOpenAboutWindow"
+      ],
+      "resources" : {
+         "agents": [
+            {
+               "os": "any"
+            }
+         ], 
+         "broker": {
+            "os": "any"
+         }
+      }
    }
 ];
 
