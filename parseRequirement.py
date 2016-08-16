@@ -27,10 +27,10 @@ spec = [
       }
    },
    {
-      "os": "10.11", 
+      "os": "10.12", 
       "was": "true",
       "testcases": [
-         "viewUITests/vmtAboutWindow/testOpenAboutWindow"
+         "mac_bat/test2"
       ],
       "resources" : {
          "agents": [
