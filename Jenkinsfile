@@ -67,4 +67,8 @@ node('viewci') {
          }
       }
    }
+
+   stage '5. Collect log'
+
+
 }

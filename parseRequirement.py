@@ -9,7 +9,7 @@ import urllib2
    Currently we always return one kind of requirement.
 """
 
-result = [
+spec = [
    {
       "os": "10.11", 
       "testcases": [
@@ -28,4 +28,4 @@ result = [
    }
 ];
 
-print json.dumps(result)
+print json.dumps(spec)
