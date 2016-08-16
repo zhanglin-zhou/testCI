@@ -1,0 +1,288 @@
+[pools]
+# Microsoft terminal server pool for BAT. may not used
+bat_ts =
+
+# Pool name that agent OS is win7. Some tests are only applicable with win7 agent.
+#If both xp and win7 is specified, self.poolName will use win7.
+win7 = win7
+
+# Pool name that agent OS is xp. Some tests are only applicable with win7 agent.
+#If both xp and win7 is specified, self.poolName will use win7
+xp =
+
+# Pool name where agent OS is win8.
+win8 =
+
+# Pool name where agent OS is win2008r2.
+win2008r2 =
+
+# Pool name where agent OS is win2012.
+win2012=
+
+# Agent OS to use (if not defined, default to win7)
+#favoriteagent=
+
+# Pool name of the second pool, this is used for Multi-Connections only
+secondpool =
+
+#Application Pools
+app1 = Notepad
+app2 = WordPad
+app3 = Notepad2
+app4 = WordPad2
+
+[viewserver]
+#This section contains View broker info for the automation
+
+#View Server admin name and password
+vsadmin = administrator
+vsadminpasswd = ca$hc0w
+
+#View user name/domain and password for view client to login
+username = yulauto
+domainname = viewcrt.fvt
+passwd = ca$hc0w
+
+#View Server address, include FQDN and IP
+servername = broker-yul0.viewcrt.fvt
+serverip = 10.117.42.125
+
+secondservername =
+secondserverip =
+
+secondusername =
+seconddomainname =
+secondpasswd =
+
+#View Security Server address, required by Security Server related tests. Otherwise, you can ignore this
+securityserver =
+
+#protocol for desktop connection
+displayprotocol = PCOIP
+
+# The common name of the certificates that will be used for Hoffa testing
+# The certificates are located under testfiles/lx-cert/
+# No need change the value unless the certificates are changed
+# For other tests, please ignore
+certcn = lxauto.crt.fvt
+
+# Smartcard associated information, including maping user and PIN. For other tests, please ignore.
+sc_cert = yzhou
+sc_pin = 0000
+sc_bus = USB\VID_08E6^&PID_3437
+
+#Used by two linux client hosts tests. For other tests, please ignore
+SecondLxHostIP = 10.117.45.98
+
+#Used by RADIUS (SMS) tests. For other tests, please ignore.
+SmsIP = 10.117.45.212
+
+# Only specify the client type like wincdk, Metro or Web(case sensitive) to diff from existing client like wswc on NT
+# Do not provide defaule client type or OS info here like wswc, NT , mac or Linux
+# Valid client types are(case sensitive):[Web, Wincdk, Metro, iPad, iPhone]
+clienttype =
+
+#selenium server info, including IP, Port, and browser[ie,firefox,chrome,safari, edge].
+#Used by web client. For other client, please ignore.
+WebClientInfo={ip=10.112.117.140:port=4444:browser=firefox}
+
+# Used by ATM, https://wiki.eng.vmware.com/ATM.
+viewVersion = 5.2.0
+viewBuild = 987719
+
+# Used for server type: View/VADC/DaaS/Enzo
+servertype = view
+
+
+[adserver]
+#Domain Controller info
+
+# The administrator of domain controller
+dcadmin = administrator
+
+# The group name on domain controller. By default, VAS suppose the broker only does the entitlement
+# via this group, so that VAS script can add/remove the entitlement.
+# This is mainly used by the authentication and not entitled error tests. For other, please ignore
+group = viewautogrp
+
+# The full domain name.
+domainname = view.com
+
+#Domain address
+dcip = 10.117.22.18
+
+#OU name on AD to hold the created user or group. Please ensure that your domain has this OU
+organizationalunit = ViewAuto
+
+# Password of the dc administrator
+dcadminpasswd = ca$hc0w
+
+[winserver]
+# info of VC, samba server, and ps controller. In most case, we use same machien for samba server and ps controller
+
+# VC address, which is used by View Server
+vcserver = 10.117.22.19
+
+# admin name and password for ps controller
+winuser = administrator
+winpassword = ca$hc0w
+
+# address of ps controller and samba server
+winhost = 10.117.45.89
+
+# Powershell path on ps controller
+psPath = c:\ViewAutoPS
+
+# Image repository on samba server for storing screenshots taken by sikuli
+imagerepository = sikuli-images
+
+# Shared path on samba server
+samba_path = view
+
+# Media files path on samba server
+media_path = view\testfiles\video
+
+# The samba mount point on Linux client machine. Other client can ignore this
+samba_path_on_linux = smb
+
+# The samba mount point on Mac/iPad/iPhone client machine. Other client can ignore this
+samba_path_on_mac = /Volumes/view
+
+# Share path on win server for View dct logs.
+dctlogpath = viewlogs
+
+# USB Switch Controler Server. (may not used by anyone)
+uscserverip =
+
+[automation]
+#Info for racetrack website
+
+# Username displays on racetrack website
+username = Ting
+
+# The product name in build web, can be [viewcrt-linux, viewcrt-windows,viewcrt-mac, viewcrt-web, ...]
+product = viewcrt
+
+# The branch name in build web.
+branch = crt-dev
+
+# The build type in build web.
+buildtype = beta
+
+#language, may not used by anyone, just ignore it.
+language = english
+
+#repository, may not used, just ignore it.
+repository = FALSE
+
+# repositoryserver could be:
+# staging: run on racetrack-dev.eng.vmware.com;
+# production: run on racetrack.eng.vmware.com (need trigger results)
+repositoryserver = staging
+
+# Determines whether print logs onto stdout. You can ignore them
+consolelog = True
+runrecover = True
+# Delete previous .csv result file. You can ignore them
+deletepreviouslogs = True
+
+# The result set ID that previous run
+resultsetid = 105780
+
+# Determines whether append current result into previous resultsetID, can be true or false
+useresultsetid = False
+
+# Test type which could be BATS,smoke,regression
+testtype = bats
+
+# Get/Dont get View dct logs from broker/agent/client.
+getdctlog = False
+
+
+# If auto-triage is enabled, VAS will check the tcmsid and bug mapping under 'exch' folder
+# If the bug is not closed on bugzilla, VAS will not run mapped tests, just set its result 
+# to Product Defect
+autotriage = True
+
+# To reduce false positive "fail", we will rerun the test case if it fails.
+# 0 means dont rerun it if fails.
+# n means rerun n time(s) if it fails.
+# total runtimes = <reruntimes> + 1
+reruntimes = 1
+
+# Run the test cases without logoff from the agent amap. You can ignore this
+continuousrun = no
+
+# This is used for UI check. You can ignore it
+# If you want to upload screenshot to racetrack even check point verification passed.
+# Please enable this entry and enable the parameter postSS in harness.VerifySafely.
+takess = false
+
+#Test Description on racetrack. you can leave this as default
+testdescription = View CRT Automation
+
+#This should be used by windows client for install script
+clientInstallerPath = c:\Automation\
+clientInstallerFile = C:\Automation\VMware-viewclient-xxx.exe
+
+[platform]
+# This will be displayed as testdata in racetrack and used for sending BATs
+# result via VTI
+Connection Server OS =
+Client OS =
+VI Version = 4.1
+Guest OS =
+View Composer Build = 270600
+ESX Build = 260247
+VC Build = 258902
+
+[printers]
+#This section is used by thin print or lbp. For other tests, just ignore them
+host_default_printer = Microsoft XPS Document Writer,winspool,Ne00:
+host_printer1 = MSXPS_Printer1,winspool,Ne02:
+guest_default_printer = Microsoft XPS Document Writer#:1,winspool,TPVM:
+guest_thinprinter1 = MSXPS_Printer1#:3,winspool,TPVM:
+# 10.112.116.19 is the FXAP4470 in the small pantry at 17F
+LBPPrinter1IP = 10.112.116.19
+# 10.112.119.18 is FXAP5540 near the door of pantry at 17F
+LBPPrinter2IP =  10.112.119.18
+
+[webcommander]
+#Web commander info.
+
+# the Web Commander server. Currently, it is 10.117.44.88
+host = 10.117.44.88
+
+# Broker VM name in VI client inventory.
+viewbrokervmname = b-2k8r2ent-m1
+
+# the VI server where the broker VM resides.
+viewbrokerviserver = bjdbus003.eng.vmware.com
+
+# the desktop and app VM IP address which will be used by Web Commender
+agentvmip =
+appvmip =
+
+[email]
+from = zzhou@vmware.com
+
+#VAS will send a notification mail for the 'passed' address, if total running result is Pass.
+#Multiple address can use ','
+passed = zzhou@vmware.com
+
+#VAS will send a notification mail for the 'failed' address, if any case fail.
+#Multiple address can use ','
+failed = zzhou@vmware.com
+
+[ssl_authentication]
+# ssl info for launch local openssl server
+# ssl testing cert file path on samba server
+ssl_certs_path =
+# used for recording packet sniff result
+ssl_result_file =
+# server cert openssl server
+ssl_server_cert =
+# server key for openssl server
+ssl_server_key =
+# ca cert for the openssl server
+ssl_ca_cert =
