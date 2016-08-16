@@ -20,6 +20,7 @@ node('viewci') {
    lock('viewci_resouce_pool') {
       unstash "requirement"
       sh "python requestResource.py -a requirements.json -p resources_pool.json > resources.json"
+      sh "git pull --no-edit"
       sh "git add resources_pool.json"
       sh "git commit --file resources.json"
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'd5e3ab3b-57eb-4698-ac9e-0537a275f28a', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
