@@ -86,8 +86,7 @@ class RunCasesForViewClientMac(object):
       for case in cases:
          cmd += (' -only-testing:%s' % case)
       cmd += '| xcpretty'
-      run = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE).communicate()
+      run = subprocess.Popen(cmd, shell=True).communicate()
 '''
       if -1 != run[0].strip().find('Test execute Succeeded'):
          logger.info('\n\n%s\n\nTest cases run SUCCEED\n\n' % run[0].strip())
