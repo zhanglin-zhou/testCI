@@ -85,7 +85,7 @@ class RunCasesForViewClientMac(object):
 
       for case in cases:
          cmd += (' -only-testing:%s' % case)
-      cmd += '| xcpretty -r junit'
+      cmd += '| xcpretty'
       run = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE).communicate()
 '''
