@@ -52,7 +52,7 @@ spec = [
       "resources" : {
          "agents": [
             {
-               "os": "win7"
+               "os": "any"
             }
          ], 
          "broker": {
