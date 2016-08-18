@@ -24,10 +24,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			H249tYT4cGpfNPaRa91OJGZWVH0=
+			4wVNwdaC4K7+5DYgf+PnBOX2KLw=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"1f6e3db584f8706a5f34f6916bdd4e246656547d"</string>
+			<string>cdhash H"e3054dc1d682e0aefee436207fe3e704e5f628bc"</string>
 		</dict>
 		<key>Resources/RunnerEntitlements.plist</key>
 		<dict>
