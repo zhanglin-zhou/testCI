@@ -7,42 +7,7 @@ import urllib2
 
 """
    Currently we always return one kind of requirement.
-    {
-      "os": "10.11", 
-      "testcases": [
-         "viewUITests/vmtAboutWindow/testConnectToDesktop"
-      ],
-      "resources" : {
-         "agents": [
-            {
-               "os": "any"
-            }
-         ], 
-         "broker": {
-            "os": "any"
-         }
-      }
-   },
-   
-"""
-
-spec = [
-   {
-      "os": "10.11", 
-      "testcases": [
-         "viewUITests/vmtAboutWindow"
-      ],
-      "resources" : {
-         "agents": [
-            {
-               "os": "win7"
-            }
-         ], 
-         "broker": {
-            "os": "any"
-         }
-      }
-   },
+    
    {
       "os": "10.12", 
       "was": "true",
@@ -60,6 +25,42 @@ spec = [
          }
       }
    }
+   
+"""
+
+spec = [
+   {
+      "os": "10.11", 
+      "testcases": [
+         "viewUITests/vmtAboutWindow/testAboutWindow"
+      ],
+      "resources" : {
+         "agents": [
+            {
+               "os": "win7"
+            }
+         ], 
+         "broker": {
+            "os": "any"
+         }
+      }
+   },
+   {
+      "os": "10.12", 
+      "testcases": [
+         "viewUITests/vmtAboutWindow/testConnectToDesktop"
+      ],
+      "resources" : {
+         "agents": [
+            {
+               "os": "any"
+            }
+         ], 
+         "broker": {
+            "os": "any"
+         }
+      }
+   },
 ];
 
 print json.dumps(spec)
