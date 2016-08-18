@@ -25,26 +25,7 @@ import urllib2
          }
       }
    }
-   
-"""
-
-spec = [
-   {
-      "os": "10.11", 
-      "testcases": [
-         "viewUITests/vmtAboutWindow/testAboutWindow"
-      ],
-      "resources" : {
-         "agents": [
-            {
-               "os": "win7"
-            }
-         ], 
-         "broker": {
-            "os": "any"
-         }
-      }
-   },
+   ,
    {
       "os": "10.12", 
       "testcases": [
@@ -61,6 +42,26 @@ spec = [
          }
       }
    },
+"""
+
+spec = [
+   {
+      "os": "10.11", 
+      "testcases": [
+         "viewUITests/vmtAboutWindow/testOpenAboutWindow",
+         "viewUITests/vmtAboutWindow/testConnectToDesktop"
+      ],
+      "resources" : {
+         "agents": [
+            {
+               "os": "win7"
+            }
+         ], 
+         "broker": {
+            "os": "any"
+         }
+      }
+   }
 ];
 
 print json.dumps(spec)
