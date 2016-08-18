@@ -85,7 +85,7 @@ class RunCasesForViewClientMac(object):
 
       for case in cases:
          cmd += (' -only-testing:%s' % case)
-      cmd += '| /usr/local/bin/xcpretty -r junit -r html'
+      cmd += '| /usr/local/bin/xcpretty -r junit'
       run = subprocess.Popen(cmd, shell=True).communicate()
 '''
       if -1 != run[0].strip().find('Test execute Succeeded'):
