@@ -146,7 +146,7 @@ media_path = view\testfiles\video
 samba_path_on_linux = smb
 
 # The samba mount point on Mac/iPad/iPhone client machine. Other client can ignore this
-samba_path_on_mac = /Volumes/view
+samba_path_on_mac = view_data
 
 # Share path on win server for View dct logs.
 dctlogpath = viewlogs
