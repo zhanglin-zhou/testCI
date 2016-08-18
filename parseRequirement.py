@@ -7,12 +7,10 @@ import urllib2
 
 """
    Currently we always return one kind of requirement.
-   ,
-   {
-      "os": "10.12", 
-      "was": "true",
+    {
+      "os": "10.11", 
       "testcases": [
-         "mac_bat/test2"
+         "viewUITests/vmtAboutWindow/testConnectToDesktop"
       ],
       "resources" : {
          "agents": [
@@ -24,14 +22,15 @@ import urllib2
             "os": "any"
          }
       }
-   }
+   },
+   
 """
 
 spec = [
    {
       "os": "10.11", 
       "testcases": [
-         "viewUITests/vmtAboutWindow/testOpenAboutWindow"
+         "viewUITests/vmtAboutWindow"
       ],
       "resources" : {
          "agents": [
@@ -45,9 +44,10 @@ spec = [
       }
    },
    {
-      "os": "10.11", 
+      "os": "10.12", 
+      "was": "true",
       "testcases": [
-         "viewUITests/vmtAboutWindow/testConnectToDesktop"
+         "mac_bat/test2"
       ],
       "resources" : {
          "agents": [
