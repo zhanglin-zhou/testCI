@@ -49,11 +49,13 @@ node('viewci') {
                writeFile file: "resource.json", text: (new JsonBuilder(resource).toString())
                sh "python deploy/deploy_viewclientmac.py -c -b '${env.ViewClientBuildNum }' -i"
                if (resource["was"] == "true") {
-                  //p4sync charset: 'none', credential: '9ec58a67-7f5a-4b9b-9c2d-a05921fe8669', depotPath: '//depot/non-framework/BFG/view-monaco/Linux', populate: [$class: 'AutoCleanImpl', delete: true, modtime: false, parallel: [enable: false, minbytes: '1024', minfiles: '1', path: '/usr/local/bin/p4', threads: '4'], pin: '', quiet: true, replace: true]
-                  // run test case
+                  p4sync charset: 'none', credential: '9ec58a67-7f5a-4b9b-9c2d-a05921fe8669', depotPath: '//depot/non-framework/BFG/view-monaco/Linux', populate: [$class: 'SyncOnlyImpl', have: true, modtime: false, pin: '', quiet: true, revert: false]
+                  sh "./runtest.sh '${env.ViewClientBuildNum }'"
+                  step([$class: 'JUnitResultArchiver', testResults: 'conf/junitResult.xml'])
                } else {
                   sh "python runCases_viewclientmac.py resource.json"
                   step([$class: 'JUnitResultArchiver', testResults: 'build/reports/*.xml'])
+                  //publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/', reportFiles: 'tests.html', reportName: 'HTML Report'])
                }
             }
          }

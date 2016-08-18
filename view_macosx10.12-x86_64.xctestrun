@@ -15,8 +15,8 @@
 		<key>DependentProductPaths</key>
 		<array>
 			<string>__TESTROOT__/VMware Horizon Client.app</string>
-			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
 			<string>__TESTROOT__/viewUITests-Runner.app/Contents/PlugIns/viewUITests.xctest</string>
+			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
 		</array>
 		<key>EnvironmentVariables</key>
 		<dict>
@@ -74,8 +74,8 @@
 		<key>DependentProductPaths</key>
 		<array>
 			<string>__TESTROOT__/VMware Horizon Client.app</string>
-			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
 			<string>__TESTROOT__/viewUITests-Runner.app/Contents/PlugIns/viewUITests.xctest</string>
+			<string>__TESTROOT__/VMware Horizon Client.app/Contents/PlugIns/viewUnitTests.xctest</string>
 		</array>
 		<key>EnvironmentVariables</key>
 		<dict>
