@@ -61,7 +61,7 @@ class DeployAgent(object):
       deliverable_url = URL_PREFIX + "/%s" % resource[DELIVERABLE_URL_ATTR]
       infos = json.loads(urllib2.urlopen(deliverable_url).read())
       for info in infos[LIST_ATTR]:
-         if info[DOWNLOAD_URL_ATTR].find("VMware-viewagent") > 0:
+         if info[DOWNLOAD_URL_ATTR].find("VMware-viewagent-x86_64") > 0:
             FancyURLopener(proxies={}).retrieve(info[DOWNLOAD_URL_ATTR], INSTALL_FILE)
             logger.info('Download %s to %s SUCCEED' %
                         (info[DOWNLOAD_URL_ATTR], INSTALL_FILE))
