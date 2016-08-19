@@ -81,7 +81,7 @@ class RunCasesForViewClientMac(object):
       cases = data[TEST_CASES_ATTR]
       cmd = 'xcodebuild test-without-building -xctestrun ' \
       'view_macosx10.12-x86_64.xctestrun -destination \'platform=macOS\' '\
-      '\'arch=x86_64\''
+      '\'arch=x86_64\' -derivedDataPath xcodelog'
 
       for case in cases:
          cmd += (' -only-testing:%s' % case)

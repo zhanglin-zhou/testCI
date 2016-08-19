@@ -65,7 +65,6 @@ class DeployViewClientMac(object):
    def _remove_cache(self):
       ''' Remove Cache files, like log, plist, Applicaton Support etc. '''
       locations = [
-         ' %s/%s' % (os.curdir, INSTALL_FILE),
          ' %s/*.log' % os.curdir,
          ' ~/Library/Logs/VMware',
          ' ~/Library/Logs/"%s"' % CLIENT_TITLE,

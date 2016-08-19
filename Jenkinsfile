@@ -13,7 +13,6 @@ node('viewci') {
    step([$class: 'WsCleanup'])
    git credentialsId:'d5e3ab3b-57eb-4698-ac9e-0537a275f28a', url:'https://github.com/zhanglin-zhou/testCI.git'
    sh "python parseRequirement.py requirement > requirements.json"
-   stash name: 'src'
 
    stage '1. Requesting resource'
 
@@ -28,7 +27,11 @@ node('viewci') {
       }
    }
 
-   stage '2. Deploy and run test cases'
+   stage '2. Downloading build'
+   sh "python deploy/deploy_viewclientmac.py -b ${env.ViewClientBuildNum }"
+   stash name: 'src'
+
+   stage '3. Deploy and run test cases'
 
    try {
       def resources = jsonParse(readFile("resources.json"))
@@ -44,7 +47,7 @@ node('viewci') {
                step([$class: 'WsCleanup'])
                unstash 'src'
                writeFile file: "resource.json", text: (new JsonBuilder(resource).toString())
-               sh "python deploy/deploy_viewclientmac.py -c -b '${env.ViewClientBuildNum }' -i"
+               sh "python deploy/deploy_viewclientmac.py -c -i"
                if (resource["was"] == "true") {
                   p4sync charset: 'none', credential: '9ec58a67-7f5a-4b9b-9c2d-a05921fe8669', depotPath: '//depot/non-framework/BFG/view-monaco/Linux', populate: [$class: 'SyncOnlyImpl', have: true, modtime: false, pin: '', quiet: true, revert: false]
                   sh "./runtest.sh '${env.ViewClientBuildNum }'"
@@ -63,7 +66,7 @@ node('viewci') {
       throw ex
    } finally {
 
-   stage '3. Release resources'
+   stage '4. Release resources'
       lock('viewci_resouce_pool') {
          sh "python requestResource.py -r resources.json -p resources_pool.json"
          sh "git add resources_pool.json"
@@ -76,7 +79,7 @@ node('viewci') {
       }
    }
 
-   stage '4. Collect log'
+   stage '5. Collect log'
 
 
 }
