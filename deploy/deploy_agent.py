@@ -20,7 +20,7 @@ from util.webclientci_log import EntryExit
 
 CLIENT_TITLE = "VMware Horizon Client"
 INSTALL_PATH = "/Applications"
-INSTALL_FILE = "installer.dmg"
+INSTALL_FILE = "agent.exe"
 CLIENT_PATH = "%s/%s.app" % (INSTALL_PATH, CLIENT_TITLE)
 MOUNT_POINT = "%s/installer" % os.curdir
 MOUNT_APP = "%s/%s.app" % (MOUNT_POINT, CLIENT_TITLE)
@@ -62,10 +62,9 @@ class DeployAgent(object):
       infos = json.loads(urllib2.urlopen(deliverable_url).read())
       for info in infos[LIST_ATTR]:
          if info[DOWNLOAD_URL_ATTR].find("VMware-viewconnectionserver") > 0:
-            filename = os.path.basename(info['path'])
-            FancyURLopener(proxies={}).retrieve(info[DOWNLOAD_URL_ATTR], filename)
+            FancyURLopener(proxies={}).retrieve(info[DOWNLOAD_URL_ATTR], INSTALL_FILE)
             logger.info('Download %s to %s SUCCEED' %
-                        (info[DOWNLOAD_URL_ATTR], filename))
+                        (info[DOWNLOAD_URL_ATTR], INSTALL_FILE))
 
 
    # Wrapper for clean up env.
@@ -96,7 +95,6 @@ class DeployAgent(object):
    @EntryExit()
    def install(self):
       ''' Install and unmount the dmg after '''
-
 
 if __name__ == "__main__":
 
