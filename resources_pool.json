@@ -1,1 +1,1 @@
-[{"agents": [{"os": "win2008", "name": "rdsh1"}], "host": "10.112.118.187", "os": "win2008", "user": {"password": "ca$hc0w", "name": "administrator@crt"}}]
+[{"agents": [{"os": "win7", "name": "viewci-agent01"}, {"os": "win7", "name": "viewci-agent03"}], "host": "10.117.9.85", "os": "win2008", "user": {"password": "ca$hc0w", "name": "viewci-automate01@viewci"}}]
